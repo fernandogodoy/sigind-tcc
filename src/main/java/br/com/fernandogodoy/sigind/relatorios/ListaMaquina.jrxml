@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListaMaquina" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="maquina" class="java.lang.String">
+		<fieldDescription><![CDATA[maquina]]></fieldDescription>
+	</field>
+	<field name="nomePessoa" class="java.lang.String">
+		<fieldDescription><![CDATA[fornecedor.pessoa.nomePessoa]]></fieldDescription>
+	</field>
+	<field name="pessoa" class="br.com.fernandogodoy.sigind.models.cadastros.Pessoa">
+		<fieldDescription><![CDATA[fornecedor.pessoa]]></fieldDescription>
+	</field>
+	<field name="fornecedor" class="br.com.fernandogodoy.sigind.models.cadastros.Fornecedor">
+		<fieldDescription><![CDATA[fornecedor]]></fieldDescription>
+	</field>
+	<field name="dtCompMaquina" class="java.util.Date">
+		<fieldDescription><![CDATA[dtCompMaquina]]></fieldDescription>
+	</field>
+	<field name="dtFinalGarMaquina" class="java.util.Date">
+		<fieldDescription><![CDATA[dtFinalGarMaquina]]></fieldDescription>
+	</field>
+	<title>
+		<band height="64" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="555" height="63" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="22" width="555" height="42" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua Antonio Moia, Nº 315 - Parque Industrial I - Loanda - PR
+CNPJ: 07.068.435/0001-11 - FONE: (44) 3425-1067
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="555" height="34" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMPEÃ INDUSTRIA E COMERCIO DE METAIS - EPP]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de Máquinas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="192" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome do Fornecedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="0" width="135" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome da máquina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="327" y="0" width="117" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="110" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Final da Garantia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="192" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomePessoa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="0" width="135" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maquina}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="327" y="0" width="117" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{dtCompMaquina}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="444" y="0" width="110" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{dtFinalGarMaquina}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<textField>
+				<reportElement x="434" y="0" width="80" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="0" width="40" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="0" width="434" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGIND - Sistema de Gerenciamento Industrial]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

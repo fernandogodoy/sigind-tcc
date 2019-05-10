@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListaPecas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="peca" class="java.lang.String">
+		<fieldDescription><![CDATA[peca]]></fieldDescription>
+	</field>
+	<field name="numPeca" class="java.lang.String">
+		<fieldDescription><![CDATA[numPeca]]></fieldDescription>
+	</field>
+	<field name="dtCadastro" class="java.util.Date">
+		<fieldDescription><![CDATA[dtCadastro]]></fieldDescription>
+	</field>
+	<field name="valorPeca" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorPeca]]></fieldDescription>
+	</field>
+	<title>
+		<band height="63" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="63" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="34" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMPEÃ INDUSTRIA E COMERCIO DE METAIS - EPP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="21" width="555" height="42" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua Antonio Moia, Nº 315 - Parque Industrial I - Loanda - PR
+CNPJ: 07.068.435/0001-11 - FONE: (44) 3425-1067
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de Peças]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="95" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número da Peça]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="0" width="234" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome da Peça]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="0" width="116" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor da Peça]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="0" width="110" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Cadastro]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="95" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numPeca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="0" width="234" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{peca}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="329" y="0" width="105" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{valorPeca}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="445" y="0" width="110" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{dtCadastro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="0" width="434" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGIND - Sistema de Gerenciamento Industrial]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="0" width="40" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="0" width="80" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListaFornecedor" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cnpjFornecedor" class="java.lang.String">
+		<fieldDescription><![CDATA[cnpjFornecedor]]></fieldDescription>
+	</field>
+	<field name="dtCadFornecedor" class="java.util.Date">
+		<fieldDescription><![CDATA[dtCadFornecedor]]></fieldDescription>
+	</field>
+	<field name="pessoa" class="br.com.fernandogodoy.sigind.models.cadastros.Pessoa">
+		<fieldDescription><![CDATA[pessoa]]></fieldDescription>
+	</field>
+	<field name="nomePessoa" class="java.lang.String">
+		<fieldDescription><![CDATA[pessoa.nomePessoa]]></fieldDescription>
+	</field>
+	<field name="contatoFornecedor" class="java.lang.String">
+		<fieldDescription><![CDATA[contatoFornecedor]]></fieldDescription>
+	</field>
+	<title>
+		<band height="63" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="63" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="21" width="555" height="42" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua Antonio Moia, Nº 315 - Parque Industrial I - Loanda - PR
+CNPJ: 07.068.435/0001-11 - FONE: (44) 3425-1067
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="34" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMPEÃ INDUSTRIA E COMERCIO DE METAIS - EPP]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de Fornecedores]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="161" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome Fornecedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="0" width="138" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CNPJ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="0" width="152" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome Contato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="0" width="104" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Cadastro]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="161" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomePessoa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="0" width="138" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cnpjFornecedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="0" width="152" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{contatoFornecedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="104" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{dtCadFornecedor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+			</rectangle>
+			<textField>
+				<reportElement x="434" y="0" width="80" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="0" width="445" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGIND - Sistema de Gerenciamento Industrial]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="0" width="40" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordemprod" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.8150000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="peca.peca" class="java.lang.String"/>
+	<field name="ordemProd.dtProdOrdemProd" class="java.util.Date"/>
+	<field name="qtdPecas" class="java.lang.Double"/>
+	<field name="ordemProd.ordemProdStatus" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="63" forecolor="#005CA1" backcolor="#005CA1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="21" width="555" height="42" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua Antonio Moia, Nº 315 - Parque Industrial I - Loanda - PR
+CNPJ: 07.068.435/0001-11 - FONE: (44) 3425-1067
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="34" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMPEÃ INDUSTRIA E COMERCIO DE METAIS - EPP]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#005CA1" backcolor="#005CA1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE ORDEM DE PRODUÇÃO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#005CA1" backcolor="#003EA1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="0" width="105" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Produção]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="0" width="257" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peça]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="0" width="71" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<line>
+				<reportElement x="107" y="0" width="1" height="20" forecolor="#FFFFFF"/>
+			</line>
+			<line>
+				<reportElement x="452" y="0" width="1" height="20" forecolor="#FFFFFF"/>
+			</line>
+			<line>
+				<reportElement x="373" y="0" width="1" height="20" forecolor="#FFFFFF"/>
+			</line>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#6699FF" backcolor="#00CCFF">
+					<printWhenExpression><![CDATA[new Boolean(($V{COLUMN_COUNT}.intValue() % 2) == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="112" y="0" width="257" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{peca.peca}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="2" y="0" width="105" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{ordemProd.dtProdOrdemProd}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="378" y="0" width="71" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{qtdPecas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ordemProd.ordemProdStatus}.equals("EM APROVAÇÃO") ?
+"EM APROVAÇÃO" :
+$F{ordemProd.ordemProdStatus}.equals("APROVADA") ?
+"APROVADA" :
+$F{ordemProd.ordemProdStatus}.equals("REPROVADA") ?
+"REPROVADA" :
+$F{ordemProd.ordemProdStatus}.equals("EM PRODUÇÃO") ?
+"EM PRODUÇÃO" :
+$F{ordemProd.ordemProdStatus}.equals("FINALIZADA") ?
+"FINALIZADA" :
+$F{ordemProd.ordemProdStatus}.equals("CANCELADA") ?
+"CANCELADA" : ""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#005CA1" backcolor="#003EA1"/>
+			</rectangle>
+			<textField>
+				<reportElement x="434" y="0" width="80" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="0" width="40" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="0" width="445" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGIND - Sistema de Gerenciamento Industrial]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

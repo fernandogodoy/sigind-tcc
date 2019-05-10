@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClientesMaisCompra" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select p.nomepessoa, count(*) from venda v inner join cliente c on v.idcliente = c.idcliente inner join pessoa p on c.idpessoa = p.idpessoa group by p.nomepessoa]]>
+	</queryString>
+	<field name="nomepessoa" class="java.lang.String"/>
+	<field name="count" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="63" forecolor="#005CA1" backcolor="#005CA1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="21" width="555" height="42" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua Antonio Moia, Nº 315 - Parque Industrial I - Loanda - PR
+CNPJ: 07.068.435/0001-11 - FONE: (44) 3425-1067
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="34" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMPEÃ INDUSTRIA E COMERCIO DE METAIS - EPP]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#005CA1" backcolor="#005CA1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Maiores Clientes]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="554" height="20" forecolor="#005CA1" backcolor="#003EA1"/>
+			</rectangle>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="0" width="40" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="0" width="424" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGIND - Sistema de Gerenciamento Industrial]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="0" width="80" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="342" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="64" y="27" width="450" height="294"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{nomepessoa}]]></keyExpression>
+					<valueExpression><![CDATA[$F{count}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContaPagar" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nomePessoa" class="java.lang.String">
+		<fieldDescription><![CDATA[compra.fornecedor.pessoa.nomePessoa]]></fieldDescription>
+	</field>
+	<field name="dtContasPagar" class="java.util.Date">
+		<fieldDescription><![CDATA[dtContasPagar]]></fieldDescription>
+	</field>
+	<field name="valorContasPagar" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[valorContasPagar]]></fieldDescription>
+	</field>
+	<variable name="soma" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorContasPagar}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="63" forecolor="#005CA1" backcolor="#005CA1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#005CA1" backcolor="#005CA1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="21" width="555" height="42" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua Antonio Moia, Nº 315 - Parque Industrial I - Loanda - PR
+CNPJ: 07.068.435/0001-11 - FONE: (44) 3425-1067
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="34" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMPEÃ INDUSTRIA E COMERCIO DE METAIS - EPP]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#005CA1" backcolor="#005CA1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="24" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Informações de Contas a Pagar por Período]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nome do Fornecedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="185" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Data de Vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="185" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="185" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomePessoa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="185" y="0" width="185" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{dtContasPagar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="370" y="0" width="164" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{valorContasPagar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#005CA1" backcolor="#003EA1"/>
+			</rectangle>
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="0" width="424" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGIND - Sistema de Gerenciamento Industrial]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="29">
+			<textField pattern="#,##0.00">
+				<reportElement x="370" y="9" width="164" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{soma}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="9" width="235" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor todal de Contas a Pagar]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
